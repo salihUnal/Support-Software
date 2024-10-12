@@ -40,12 +40,12 @@
             label1 = new Label();
             closeButton = new Button();
             SidePanel = new Panel();
+            CloseBtn = new Button();
             VersionLbl = new Label();
             OwnerLbl = new Label();
             pictureBox1 = new PictureBox();
             RdpDeleteButton = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
-            button1 = new Button();
             MainPanel.SuspendLayout();
             TopPanel.SuspendLayout();
             SidePanel.SuspendLayout();
@@ -173,7 +173,7 @@
             // SidePanel
             // 
             SidePanel.BackColor = Color.FromArgb(24, 30, 50);
-            SidePanel.Controls.Add(button1);
+            SidePanel.Controls.Add(CloseBtn);
             SidePanel.Controls.Add(VersionLbl);
             SidePanel.Controls.Add(OwnerLbl);
             SidePanel.Controls.Add(pictureBox1);
@@ -184,6 +184,20 @@
             SidePanel.MouseDown += panel1_MouseMove;
             SidePanel.MouseMove += panel1_MouseMove;
             SidePanel.MouseUp += panel1_MouseUp;
+            // 
+            // CloseBtn
+            // 
+            CloseBtn.FlatAppearance.BorderSize = 2;
+            CloseBtn.FlatStyle = FlatStyle.Flat;
+            CloseBtn.Font = new Font("Marlett", 8.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
+            CloseBtn.ForeColor = Color.White;
+            CloseBtn.Location = new Point(39, 217);
+            CloseBtn.Name = "CloseBtn";
+            CloseBtn.Size = new Size(60, 25);
+            CloseBtn.TabIndex = 3;
+            CloseBtn.Text = "Kapat";
+            CloseBtn.UseVisualStyleBackColor = true;
+            CloseBtn.Click += button1_Click;
             // 
             // VersionLbl
             // 
@@ -236,19 +250,6 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
-            // button1
-            // 
-            button1.FlatAppearance.BorderSize = 2;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Marlett", 8.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(39, 217);
-            button1.Name = "button1";
-            button1.Size = new Size(60, 25);
-            button1.TabIndex = 3;
-            button1.Text = "Kapat";
-            button1.UseVisualStyleBackColor = true;
-            // 
             // Support_Software
             // 
             AcceptButton = RdpDeleteButtonold;
@@ -293,6 +294,6 @@
         private System.Windows.Forms.Timer timer1;
         private Button RdpDeleteButton;
         private Label label1;
-        private Button button1;
+        private Button CloseBtn;
     }
 }

@@ -48,7 +48,7 @@ namespace Support_Software
                             }
                         }
                     }
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -69,7 +69,7 @@ namespace Support_Software
                     MessageBox.Show("Temizlemek için Rdp Dosyasý Mevcut Deðil", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
-               
+
             }
 
         }
@@ -107,7 +107,7 @@ namespace Support_Software
                         }
 
                     }
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -127,13 +127,13 @@ namespace Support_Software
                 else
                 {
 
-                    MessageBox.Show("Temizlemek için Pdf Dosyasý Mevcut Deðil" , "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Temizlemek için Pdf Dosyasý Mevcut Deðil", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
             }
 
         }
-        
+
 
         private void closeButton_Click(object sender, EventArgs e)
         {
@@ -189,6 +189,11 @@ namespace Support_Software
         {
             DateTime now = DateTime.Now;
             this.DateTimeLbl.Text = now.ToString("dd MMM yyyy dddd h:mm ");
+        }
+
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 
