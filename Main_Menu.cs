@@ -12,28 +12,34 @@ namespace Support_Software
 
         }
 
+        // Dinamik olarak Downloads klasörünü bulma
+        private string GetDownloadFolder()
+        {
+            string downloadFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+
+            // OneDrive kontrolü
+            string onedrivePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "OneDrive");
+            string onedriveDownloads = Path.Combine(onedrivePath, "Downloads");
+
+            if (Directory.Exists(onedriveDownloads))
+            {
+                return onedriveDownloads;  // Eðer OneDrive kullanýyorsa, OneDrive\Downloads yolunu döndür
+            }
+
+            return downloadFolderPath;  // OneDrive kullanýlmýyorsa standart Downloads yolunu döndür
+        }
+
+
         private void RdpDeleteButton_Click(object sender, EventArgs e)
         {
-            string klasorYolu = @"C:\Users\Salih\OneDrive - 42 Biliþim A.Þ\Downloads\"; // Seçilen klasörün yolu
-                                                                                        //string uzanti = ".rdp"; // Silmek istediðiniz dosya uzantýsý
+            string klasorYolu = GetDownloadFolder(); // Dinamik Downloads klasörü
 
             string[] RdpDosyaUzantilari = { ".rdp" }; // Silmek istediðiniz RDP dosya uzantýlarý
 
             DirectoryInfo klasorrdp = new DirectoryInfo(klasorYolu);
             int deletedRdpFileCount = 0;
 
-            //SilBelirliUzantiDosyalari(klasorYolu, dosyaUzantilari);
-
-
-            // Kullanýcýnýn bir klasör seçmesini saðlayýn
-            using (FolderBrowserDialog klasorSecici = new FolderBrowserDialog())
-            {
-
-
-                // Klasördeki dosyalarý alýn
-
-
-                try
+            try
                 {
                     // Her dosyayý kontrol et ve rdp  dosyalarý sil
                     foreach (FileInfo dosya in klasorrdp.GetFiles())
@@ -49,88 +55,63 @@ namespace Support_Software
                         }
                     }
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Hata oluþtu: {ex.Message}");
-                }
-
+             
+         // Silinen dosya sayýsýna göre mesaj göster
                 if (deletedRdpFileCount > 0)
-                {
-
-                    //MessageBox.Show($"{dosya.Extension} Dosyalarý silindi.");
-                    MessageBox.Show($"Toplam {deletedRdpFileCount} RDP dosyasý temizlendi.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-
-                else
-                {
-
-                    MessageBox.Show("Temizlemek için Rdp Dosyasý Mevcut Deðil", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                }
-
+            {
+                MessageBox.Show($"Toplam {deletedRdpFileCount} RDP dosyasý temizlendi.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
+            else
+            {
+                MessageBox.Show("Temizlemek için RDP dosyasý mevcut deðil.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+                 }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata oluþtu: {ex.Message}");
+            }
         }
+
+
 
         private void BybckDeleteButton_Click(object sender, EventArgs e)
         {
-            string klasorYolu = @"C:\Users\Salih\OneDrive - 42 Biliþim A.Þ\Downloads\"; // Seçilen klasörün yolu
-            //string uzanti = ".rdp"; // Silmek istediðiniz dosya uzantýsý
+            string klasorYolu = GetDownloadFolder(); // Dinamik Downloads klasörü
+
+            string[] BybckDosyaUzantilari = { ".pdf" }; // Silmek istediðiniz PDF dosya uzantýlarý
             DirectoryInfo klasorbybck = new DirectoryInfo(klasorYolu);
-            string[] BybckDosyaUzantilari = { ".pdf" }; // Silmek istediðiniz Pdf dosya uzantýlarý
             int deletedBybckFileCount = 0;
 
-
-            // Kullanýcýnýn bir klasör seçmesini saðlayýn
-            using (FolderBrowserDialog klasorSecici = new FolderBrowserDialog())
+            try
             {
-
-
-                // Klasördeki dosyalarý alýn
-
-
-                try
+                // Her dosyayý kontrol et ve pdf dosyalarý sil
+                foreach (FileInfo dosya in klasorbybck.GetFiles())
                 {
-                    // Her dosyayý kontrol et ve rdp  dosyalarý sil
-                    foreach (FileInfo dosya in klasorbybck.GetFiles())
+                    foreach (var uzantibybck in BybckDosyaUzantilari)
                     {
-                        foreach (var uzantibybck in BybckDosyaUzantilari)
+                        if (dosya.Extension == uzantibybck)
                         {
-                            if (dosya.Extension == uzantibybck)
-                            {
-                                dosya.Delete();
-                                deletedBybckFileCount++;
-
-                            }
+                            dosya.Delete();
+                            deletedBybckFileCount++;
                         }
-
                     }
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Hata oluþtu: {ex.Message}");
                 }
 
-
+                // Silinen dosya sayýsýna göre mesaj göster
                 if (deletedBybckFileCount > 0)
                 {
-
-
-                    //MessageBox.Show($"{dosya.Extension} Dosyalarý silindi.");
-                    MessageBox.Show($"Toplam {deletedBybckFileCount} Pdf dosyasý temizlendi.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    MessageBox.Show($"Toplam {deletedBybckFileCount} PDF dosyasý temizlendi.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
                 else
                 {
-
-                    MessageBox.Show("Temizlemek için Pdf Dosyasý Mevcut Deðil", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                    MessageBox.Show("Temizlemek için PDF dosyasý mevcut deðil.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata oluþtu: {ex.Message}");
+            }
+     
 
         }
 
