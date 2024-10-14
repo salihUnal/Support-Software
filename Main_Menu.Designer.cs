@@ -40,7 +40,7 @@
             label1 = new Label();
             closeButton = new Button();
             SidePanel = new Panel();
-            CloseBtn = new Button();
+            //CloseBtn = new Button();
             VersionLbl = new Label();
             OwnerLbl = new Label();
             pictureBox1 = new PictureBox();
@@ -173,7 +173,7 @@
             // SidePanel
             // 
             SidePanel.BackColor = Color.FromArgb(24, 30, 50);
-            SidePanel.Controls.Add(CloseBtn);
+            //SidePanel.Controls.Add(CloseBtn);
             SidePanel.Controls.Add(VersionLbl);
             SidePanel.Controls.Add(OwnerLbl);
             SidePanel.Controls.Add(pictureBox1);
@@ -186,18 +186,18 @@
             SidePanel.MouseUp += panel1_MouseUp;
             // 
             // CloseBtn
-            // 
-            CloseBtn.FlatAppearance.BorderSize = 2;
-            CloseBtn.FlatStyle = FlatStyle.Flat;
-            CloseBtn.Font = new Font("Marlett", 8.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
-            CloseBtn.ForeColor = Color.White;
-            CloseBtn.Location = new Point(39, 217);
-            CloseBtn.Name = "CloseBtn";
-            CloseBtn.Size = new Size(60, 25);
-            CloseBtn.TabIndex = 3;
-            CloseBtn.Text = "Kapat";
-            CloseBtn.UseVisualStyleBackColor = true;
-            CloseBtn.Click += button1_Click;
+            //// 
+            //CloseBtn.FlatAppearance.BorderSize = 2;
+            //CloseBtn.FlatStyle = FlatStyle.Flat;
+            //CloseBtn.Font = new Font("Marlett", 8.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
+            //CloseBtn.ForeColor = Color.White;
+            //CloseBtn.Location = new Point(39, 217);
+            //CloseBtn.Name = "CloseBtn";
+            //CloseBtn.Size = new Size(60, 25);
+            //CloseBtn.TabIndex = 3;
+            //CloseBtn.Text = "Kapat";
+            //CloseBtn.UseVisualStyleBackColor = true;
+            //CloseBtn.Click += button1_Click;
             // 
             // VersionLbl
             // 
@@ -294,6 +294,6 @@
         private System.Windows.Forms.Timer timer1;
         private Button RdpDeleteButton;
         private Label label1;
-        private Button CloseBtn;
+        //private Button CloseBtn;
     }
 }

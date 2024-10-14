@@ -172,10 +172,10 @@ namespace Support_Software
             this.DateTimeLbl.Text = now.ToString("dd MMM yyyy dddd h:mm ");
         }
 
-        private void CloseBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        //private void CloseBtn_Click(object sender, EventArgs e)
+        //{
+        //    this.Close();
+        //}
     }
 
 
