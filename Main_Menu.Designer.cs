@@ -31,21 +31,21 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Support_Software));
             MainPanel = new Panel();
+            WarnTextBox = new TextBox();
             DateTimeLbl = new Label();
             PdfLbl = new Label();
             RdpLbl = new Label();
             BybckDeleteButton = new Button();
-            RdpDeleteButtonold = new Button();
             TopPanel = new Panel();
             label1 = new Label();
             CloseBtnTop = new Button();
             SidePanel = new Panel();
+            CloseBtnDown = new Button();
             VersionLbl = new Label();
             OwnerLbl = new Label();
             pictureBox1 = new PictureBox();
             RdpDeleteButton = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
-            CloseBtnDown = new Button();
             MainPanel.SuspendLayout();
             TopPanel.SuspendLayout();
             SidePanel.SuspendLayout();
@@ -54,11 +54,11 @@
             // 
             // MainPanel
             // 
+            MainPanel.Controls.Add(WarnTextBox);
             MainPanel.Controls.Add(DateTimeLbl);
             MainPanel.Controls.Add(PdfLbl);
             MainPanel.Controls.Add(RdpLbl);
             MainPanel.Controls.Add(BybckDeleteButton);
-            MainPanel.Controls.Add(RdpDeleteButtonold);
             MainPanel.Controls.Add(TopPanel);
             MainPanel.Controls.Add(SidePanel);
             MainPanel.Controls.Add(RdpDeleteButton);
@@ -67,6 +67,20 @@
             MainPanel.Size = new Size(418, 348);
             MainPanel.TabIndex = 0;
             MainPanel.Paint += panel1_Paint;
+            // 
+            // WarnTextBox
+            // 
+            WarnTextBox.BackColor = Color.FromArgb(46, 51, 73);
+            WarnTextBox.BorderStyle = BorderStyle.None;
+            WarnTextBox.ForeColor = Color.OrangeRed;
+            WarnTextBox.Location = new Point(171, 237);
+            WarnTextBox.Multiline = true;
+            WarnTextBox.Name = "WarnTextBox";
+            WarnTextBox.ReadOnly = true;
+            WarnTextBox.Size = new Size(230, 66);
+            WarnTextBox.TabIndex = 9;
+            WarnTextBox.Text = "                             Dikkat!! \n                           \"Pdf Sil\" Butonu İndirilenler Klasörünüzdeki Tüm \"Pdf\" Dosyalarınızı Siler!!";
+            WarnTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // DateTimeLbl
             // 
@@ -117,19 +131,6 @@
             BybckDeleteButton.TabIndex = 2;
             BybckDeleteButton.UseVisualStyleBackColor = true;
             BybckDeleteButton.Click += BybckDeleteButton_Click;
-            // 
-            // RdpDeleteButtonold
-            // 
-            RdpDeleteButtonold.BackgroundImage = (Image)resources.GetObject("RdpDeleteButtonold.BackgroundImage");
-            RdpDeleteButtonold.BackgroundImageLayout = ImageLayout.Stretch;
-            RdpDeleteButtonold.FlatAppearance.BorderSize = 0;
-            RdpDeleteButtonold.FlatStyle = FlatStyle.Flat;
-            RdpDeleteButtonold.Location = new Point(232, 211);
-            RdpDeleteButtonold.Name = "RdpDeleteButtonold";
-            RdpDeleteButtonold.Size = new Size(81, 88);
-            RdpDeleteButtonold.TabIndex = 1;
-            RdpDeleteButtonold.UseVisualStyleBackColor = true;
-            RdpDeleteButtonold.Visible = false;
             // 
             // TopPanel
             // 
@@ -185,6 +186,20 @@
             SidePanel.MouseMove += panel1_MouseMove;
             SidePanel.MouseUp += panel1_MouseUp;
             // 
+            // CloseBtnDown
+            // 
+            CloseBtnDown.FlatAppearance.BorderColor = Color.White;
+            CloseBtnDown.FlatStyle = FlatStyle.Flat;
+            CloseBtnDown.Font = new Font("Marlett", 8.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
+            CloseBtnDown.ForeColor = Color.White;
+            CloseBtnDown.Location = new Point(40, 234);
+            CloseBtnDown.Name = "CloseBtnDown";
+            CloseBtnDown.Size = new Size(55, 25);
+            CloseBtnDown.TabIndex = 3;
+            CloseBtnDown.Text = "Kapat";
+            CloseBtnDown.UseVisualStyleBackColor = true;
+            CloseBtnDown.Click += CloseBtnDown_Click;
+            // 
             // VersionLbl
             // 
             VersionLbl.AutoSize = true;
@@ -192,9 +207,9 @@
             VersionLbl.Font = new Font("Jupitex", 8.25F);
             VersionLbl.Location = new Point(9, 318);
             VersionLbl.Name = "VersionLbl";
-            VersionLbl.Size = new Size(66, 11);
+            VersionLbl.Size = new Size(68, 11);
             VersionLbl.TabIndex = 2;
-            VersionLbl.Text = "Version 1.0.6";
+            VersionLbl.Text = "Version 1.0.10";
             // 
             // OwnerLbl
             // 
@@ -236,23 +251,8 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
-            // CloseBtnDown
-            // 
-            CloseBtnDown.FlatAppearance.BorderSize = 0;
-            CloseBtnDown.FlatStyle = FlatStyle.Flat;
-            CloseBtnDown.Font = new Font("Marlett", 8.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
-            CloseBtnDown.ForeColor = Color.White;
-            CloseBtnDown.Location = new Point(39, 208);
-            CloseBtnDown.Name = "CloseBtnDown";
-            CloseBtnDown.Size = new Size(55, 25);
-            CloseBtnDown.TabIndex = 3;
-            CloseBtnDown.Text = "Kapat";
-            CloseBtnDown.UseVisualStyleBackColor = true;
-            CloseBtnDown.Click += CloseBtnDown_Click;
-            // 
             // Support_Software
             // 
-            AcceptButton = RdpDeleteButtonold;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 51, 73);
@@ -280,7 +280,6 @@
 
 
         private Panel MainPanel;
-        private Button RdpDeleteButtonold;
         private Panel TopPanel;
         private Panel SidePanel;
         private Button BybckDeleteButton;
@@ -295,6 +294,7 @@
         private Button RdpDeleteButton;
         private Label label1;
         private Button CloseBtnDown;
+        private TextBox WarnTextBox;
         //private Button CloseBtn;
     }
 }

@@ -5,6 +5,8 @@ namespace Support_Software
         public Support_Software()
         {
             InitializeComponent();
+
+         
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
