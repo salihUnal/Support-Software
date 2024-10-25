@@ -13,59 +13,75 @@ namespace Support_Software
         }
 
         // Dinamik olarak Downloads klasörünü bulma
-        private string GetDownloadFolder()
+        public string GetDownloadFolder()
         {
-            string downloadFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
 
-            // OneDrive kontrolü
-            string onedrivePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "OneDrive");
-            string onedriveDownloads = Path.Combine(onedrivePath, "Downloads");
 
-            if (Directory.Exists(onedriveDownloads))
+            // Ayarlardan kayýtlý yolu okuyun
+            string savedPath = Properties.Settings.Default.DownloadFolderPath;
+            if (!string.IsNullOrEmpty(savedPath) && Directory.Exists(savedPath))
             {
-                return onedriveDownloads;  // Eðer OneDrive kullanýyorsa, OneDrive\Downloads yolunu döndür
+                return savedPath;
             }
 
-            return downloadFolderPath;  // OneDrive kullanýlmýyorsa standart Downloads yolunu döndür
+            // Kullanýcýdan dizin seçmesini isteyin
+            using (var folderDialog = new FolderBrowserDialog())
+            {
+                folderDialog.Description = "Lütfen indirme klasörünü seçin";
+                folderDialog.ShowNewFolderButton = false;
+
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Seçilen yolu ayarlara kaydedin
+                    Properties.Settings.Default.DownloadFolderPath = folderDialog.SelectedPath;
+                    Properties.Settings.Default.Save();
+                    return folderDialog.SelectedPath;
+                }
+            }
+
+            MessageBox.Show("Klasör seçilmedi.");
+            return string.Empty;
         }
+
+
 
 
         private void RdpDeleteButton_Click(object sender, EventArgs e)
         {
-            string klasorYolu = GetDownloadFolder(); // Dinamik Downloads klasörü
+            string klasorYolu = GetDownloadFolder();
+            if (string.IsNullOrEmpty(klasorYolu))
+            {
+                MessageBox.Show("Geçerli bir Downloads klasör yolu bulunamadý.");
+                return;
+            }
 
-            string[] RdpDosyaUzantilari = { ".rdp" }; // Silmek istediðiniz RDP dosya uzantýlarý
-
+            string[] RdpDosyaUzantilari = { ".rdp" };
             DirectoryInfo klasorrdp = new DirectoryInfo(klasorYolu);
             int deletedRdpFileCount = 0;
 
             try
+            {
+                foreach (FileInfo dosya in klasorrdp.GetFiles())
                 {
-                    // Her dosyayý kontrol et ve rdp  dosyalarý sil
-                    foreach (FileInfo dosya in klasorrdp.GetFiles())
+                    foreach (var uzantirdp in RdpDosyaUzantilari)
                     {
-                        foreach (var uzantirdp in RdpDosyaUzantilari)
+                        if (dosya.Extension == uzantirdp)
                         {
-                            if (dosya.Extension == uzantirdp)
-                            {
-                                dosya.Delete();
-                                deletedRdpFileCount++;
-
-                            }
+                            dosya.Delete();
+                            deletedRdpFileCount++;
                         }
                     }
+                }
 
-             
-         // Silinen dosya sayýsýna göre mesaj göster
                 if (deletedRdpFileCount > 0)
-            {
-                MessageBox.Show($"Toplam {deletedRdpFileCount} RDP dosyasý temizlendi.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                {
+                    MessageBox.Show($"Toplam {deletedRdpFileCount} RDP dosyasý temizlendi.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Harika!! \n Temizlemek için RDP dosyasý mevcut deðil.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
-            {
-                MessageBox.Show("Temizlemek için RDP dosyasý mevcut deðil.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-                 }
             catch (Exception ex)
             {
                 MessageBox.Show($"Hata oluþtu: {ex.Message}");
@@ -73,10 +89,14 @@ namespace Support_Software
         }
 
 
-
         private void BybckDeleteButton_Click(object sender, EventArgs e)
         {
             string klasorYolu = GetDownloadFolder(); // Dinamik Downloads klasörü
+            if (string.IsNullOrEmpty(klasorYolu))
+            {
+                MessageBox.Show("Geçerli bir Downloads klasör yolu bulunamadý.");
+                return;
+            }
 
             string[] BybckDosyaUzantilari = { ".pdf" }; // Silmek istediðiniz PDF dosya uzantýlarý
             DirectoryInfo klasorbybck = new DirectoryInfo(klasorYolu);
@@ -104,14 +124,14 @@ namespace Support_Software
                 }
                 else
                 {
-                    MessageBox.Show("Temizlemek için PDF dosyasý mevcut deðil.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Harika!! \n Temizlemek için PDF dosyasý mevcut deðil.", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Hata oluþtu: {ex.Message}");
             }
-     
+
 
         }
 
@@ -170,6 +190,11 @@ namespace Support_Software
         {
             DateTime now = DateTime.Now;
             this.DateTimeLbl.Text = now.ToString("dd MMM yyyy dddd h:mm ");
+        }
+
+        private void CloseBtnDown_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         //private void CloseBtn_Click(object sender, EventArgs e)

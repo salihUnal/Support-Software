@@ -38,14 +38,14 @@
             RdpDeleteButtonold = new Button();
             TopPanel = new Panel();
             label1 = new Label();
-            closeButton = new Button();
+            CloseBtnTop = new Button();
             SidePanel = new Panel();
-            //CloseBtn = new Button();
             VersionLbl = new Label();
             OwnerLbl = new Label();
             pictureBox1 = new PictureBox();
             RdpDeleteButton = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
+            CloseBtnDown = new Button();
             MainPanel.SuspendLayout();
             TopPanel.SuspendLayout();
             SidePanel.SuspendLayout();
@@ -135,7 +135,7 @@
             // 
             TopPanel.BackColor = Color.FromArgb(46, 51, 73);
             TopPanel.Controls.Add(label1);
-            TopPanel.Controls.Add(closeButton);
+            TopPanel.Controls.Add(CloseBtnTop);
             TopPanel.Location = new Point(152, 3);
             TopPanel.Name = "TopPanel";
             TopPanel.Size = new Size(266, 64);
@@ -156,24 +156,24 @@
             label1.TabIndex = 4;
             label1.Text = "DOSYALARI SİL";
             // 
-            // closeButton
+            // CloseBtnTop
             // 
-            closeButton.FlatAppearance.BorderSize = 0;
-            closeButton.FlatStyle = FlatStyle.Flat;
-            closeButton.Font = new Font("Marlett", 8.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
-            closeButton.ForeColor = Color.White;
-            closeButton.Location = new Point(241, 0);
-            closeButton.Name = "closeButton";
-            closeButton.Size = new Size(25, 25);
-            closeButton.TabIndex = 0;
-            closeButton.Text = "X";
-            closeButton.UseVisualStyleBackColor = true;
-            closeButton.Click += closeButton_Click;
+            CloseBtnTop.FlatAppearance.BorderSize = 0;
+            CloseBtnTop.FlatStyle = FlatStyle.Flat;
+            CloseBtnTop.Font = new Font("Marlett", 8.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
+            CloseBtnTop.ForeColor = Color.White;
+            CloseBtnTop.Location = new Point(241, 0);
+            CloseBtnTop.Name = "CloseBtnTop";
+            CloseBtnTop.Size = new Size(25, 25);
+            CloseBtnTop.TabIndex = 0;
+            CloseBtnTop.Text = "X";
+            CloseBtnTop.UseVisualStyleBackColor = true;
+            CloseBtnTop.Click += closeButton_Click;
             // 
             // SidePanel
             // 
             SidePanel.BackColor = Color.FromArgb(24, 30, 50);
-            //SidePanel.Controls.Add(CloseBtn);
+            SidePanel.Controls.Add(CloseBtnDown);
             SidePanel.Controls.Add(VersionLbl);
             SidePanel.Controls.Add(OwnerLbl);
             SidePanel.Controls.Add(pictureBox1);
@@ -184,20 +184,6 @@
             SidePanel.MouseDown += panel1_MouseMove;
             SidePanel.MouseMove += panel1_MouseMove;
             SidePanel.MouseUp += panel1_MouseUp;
-            // 
-            // CloseBtn
-            //// 
-            //CloseBtn.FlatAppearance.BorderSize = 2;
-            //CloseBtn.FlatStyle = FlatStyle.Flat;
-            //CloseBtn.Font = new Font("Marlett", 8.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
-            //CloseBtn.ForeColor = Color.White;
-            //CloseBtn.Location = new Point(39, 217);
-            //CloseBtn.Name = "CloseBtn";
-            //CloseBtn.Size = new Size(60, 25);
-            //CloseBtn.TabIndex = 3;
-            //CloseBtn.Text = "Kapat";
-            //CloseBtn.UseVisualStyleBackColor = true;
-            //CloseBtn.Click += button1_Click;
             // 
             // VersionLbl
             // 
@@ -250,6 +236,20 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
+            // CloseBtnDown
+            // 
+            CloseBtnDown.FlatAppearance.BorderSize = 0;
+            CloseBtnDown.FlatStyle = FlatStyle.Flat;
+            CloseBtnDown.Font = new Font("Marlett", 8.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
+            CloseBtnDown.ForeColor = Color.White;
+            CloseBtnDown.Location = new Point(39, 208);
+            CloseBtnDown.Name = "CloseBtnDown";
+            CloseBtnDown.Size = new Size(55, 25);
+            CloseBtnDown.TabIndex = 3;
+            CloseBtnDown.Text = "Kapat";
+            CloseBtnDown.UseVisualStyleBackColor = true;
+            CloseBtnDown.Click += CloseBtnDown_Click;
+            // 
             // Support_Software
             // 
             AcceptButton = RdpDeleteButtonold;
@@ -287,13 +287,14 @@
         private PictureBox pictureBox1;
         private Label VersionLbl;
         private Label OwnerLbl;
-        private Button closeButton;
+        private Button CloseBtnTop;
         private Label PdfLbl;
         private Label RdpLbl;
         private Label DateTimeLbl;
         private System.Windows.Forms.Timer timer1;
         private Button RdpDeleteButton;
         private Label label1;
+        private Button CloseBtnDown;
         //private Button CloseBtn;
     }
 }
