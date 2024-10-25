@@ -189,6 +189,8 @@
             // CloseBtnDown
             // 
             CloseBtnDown.FlatAppearance.BorderColor = Color.White;
+            CloseBtnDown.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            CloseBtnDown.FlatAppearance.MouseOverBackColor = Color.Red;
             CloseBtnDown.FlatStyle = FlatStyle.Flat;
             CloseBtnDown.Font = new Font("Marlett", 8.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
             CloseBtnDown.ForeColor = Color.White;
