@@ -46,6 +46,7 @@
             pictureBox1 = new PictureBox();
             RdpDeleteButton = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
+            button1 = new Button();
             MainPanel.SuspendLayout();
             TopPanel.SuspendLayout();
             SidePanel.SuspendLayout();
@@ -54,6 +55,7 @@
             // 
             // MainPanel
             // 
+            MainPanel.Controls.Add(button1);
             MainPanel.Controls.Add(WarnTextBox);
             MainPanel.Controls.Add(PdfLbl);
             MainPanel.Controls.Add(RdpLbl);
@@ -253,6 +255,15 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
+            // button1
+            // 
+            button1.Location = new Point(278, 201);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 10;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Support_Software
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -297,6 +308,7 @@
         private Label label1;
         private Button CloseBtnDown;
         private TextBox WarnTextBox;
+        private Button button1;
         //private Button CloseBtn;
     }
 }
