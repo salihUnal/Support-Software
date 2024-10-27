@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Support_Software));
             MainPanel = new Panel();
             WarnTextBox = new TextBox();
-            DateTimeLbl = new Label();
             PdfLbl = new Label();
             RdpLbl = new Label();
             BybckDeleteButton = new Button();
@@ -41,6 +40,7 @@
             CloseBtnTop = new Button();
             SidePanel = new Panel();
             CloseBtnDown = new Button();
+            DateTimeLbl = new Label();
             VersionLbl = new Label();
             OwnerLbl = new Label();
             pictureBox1 = new PictureBox();
@@ -55,7 +55,6 @@
             // MainPanel
             // 
             MainPanel.Controls.Add(WarnTextBox);
-            MainPanel.Controls.Add(DateTimeLbl);
             MainPanel.Controls.Add(PdfLbl);
             MainPanel.Controls.Add(RdpLbl);
             MainPanel.Controls.Add(BybckDeleteButton);
@@ -81,17 +80,6 @@
             WarnTextBox.TabIndex = 9;
             WarnTextBox.Text = "                             Dikkat!! \n                           \"Pdf Sil\" Butonu İndirilenler Klasörünüzdeki Tüm \"Pdf\" Dosyalarınızı Siler!!";
             WarnTextBox.TextAlign = HorizontalAlignment.Center;
-            // 
-            // DateTimeLbl
-            // 
-            DateTimeLbl.AutoSize = true;
-            DateTimeLbl.FlatStyle = FlatStyle.System;
-            DateTimeLbl.Font = new Font("Jupitex", 8.25F);
-            DateTimeLbl.Location = new Point(159, 321);
-            DateTimeLbl.Name = "DateTimeLbl";
-            DateTimeLbl.Size = new Size(50, 11);
-            DateTimeLbl.TabIndex = 5;
-            DateTimeLbl.Text = "DateTime";
             // 
             // PdfLbl
             // 
@@ -153,9 +141,9 @@
             label1.ForeColor = Color.PaleGoldenrod;
             label1.Location = new Point(74, 18);
             label1.Name = "label1";
-            label1.Size = new Size(108, 29);
+            label1.Size = new Size(116, 29);
             label1.TabIndex = 4;
-            label1.Text = "DOSYALARI SİL";
+            label1.Text = "Support Software";
             // 
             // CloseBtnTop
             // 
@@ -175,6 +163,7 @@
             // 
             SidePanel.BackColor = Color.FromArgb(24, 30, 50);
             SidePanel.Controls.Add(CloseBtnDown);
+            SidePanel.Controls.Add(DateTimeLbl);
             SidePanel.Controls.Add(VersionLbl);
             SidePanel.Controls.Add(OwnerLbl);
             SidePanel.Controls.Add(pictureBox1);
@@ -188,7 +177,7 @@
             // 
             // CloseBtnDown
             // 
-            CloseBtnDown.FlatAppearance.BorderColor = Color.White;
+            CloseBtnDown.FlatAppearance.BorderColor = Color.Gray;
             CloseBtnDown.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             CloseBtnDown.FlatAppearance.MouseOverBackColor = Color.Red;
             CloseBtnDown.FlatStyle = FlatStyle.Flat;
@@ -202,12 +191,23 @@
             CloseBtnDown.UseVisualStyleBackColor = true;
             CloseBtnDown.Click += CloseBtnDown_Click;
             // 
+            // DateTimeLbl
+            // 
+            DateTimeLbl.AutoSize = true;
+            DateTimeLbl.FlatStyle = FlatStyle.System;
+            DateTimeLbl.Font = new Font("Jupitex", 8.25F);
+            DateTimeLbl.Location = new Point(9, 298);
+            DateTimeLbl.Name = "DateTimeLbl";
+            DateTimeLbl.Size = new Size(50, 11);
+            DateTimeLbl.TabIndex = 5;
+            DateTimeLbl.Text = "DateTime";
+            // 
             // VersionLbl
             // 
             VersionLbl.AutoSize = true;
             VersionLbl.FlatStyle = FlatStyle.System;
             VersionLbl.Font = new Font("Jupitex", 8.25F);
-            VersionLbl.Location = new Point(9, 318);
+            VersionLbl.Location = new Point(9, 329);
             VersionLbl.Name = "VersionLbl";
             VersionLbl.Size = new Size(68, 11);
             VersionLbl.TabIndex = 2;

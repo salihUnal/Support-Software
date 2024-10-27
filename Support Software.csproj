@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>Support_Software.Program</StartupObject>
+    <ApplicationIcon>trash.ico</ApplicationIcon>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="trash.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
